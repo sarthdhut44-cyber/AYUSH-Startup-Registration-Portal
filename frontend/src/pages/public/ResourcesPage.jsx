@@ -22,6 +22,7 @@ import { resourceAPI, getApiErrorMessage } from '../../services/api';
 import PageTransition from '../../layouts/PageTransition';
 import HighlightText from '../../components/common/HighlightText';
 import ScrollToTopButton from '../../components/common/ScrollToTopButton';
+import { calculateReadingTime, formatReadingTime } from '../../utils/readingTime';
 
 const categories = [
   'All',
@@ -402,6 +403,10 @@ export default function ResourcesPage() {
                         {resource.type === 'official' && (
                           <ShieldCheck className="w-4 h-4 text-blue-500" title="Official Government Portal" />
                         )}
+                        <span className="text-[11px] text-text-muted flex items-center gap-1 ml-1" title="Estimated reading time">
+                          <Clock className="w-3 h-3 text-gray-400" />
+                          {formatReadingTime(calculateReadingTime(resource.description || resource.summary || ''))}
+                        </span>
                         {resource.url && resource.url !== '#' && (
                           <button
                             type="button"
