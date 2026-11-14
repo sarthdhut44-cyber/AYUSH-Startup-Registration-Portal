@@ -21,6 +21,7 @@ import {
 import { resourceAPI, getApiErrorMessage } from '../../services/api';
 import PageTransition from '../../layouts/PageTransition';
 import HighlightText from '../../components/common/HighlightText';
+import ScrollToTopButton from '../../components/common/ScrollToTopButton';
 
 const categories = [
   'All',
@@ -568,6 +569,7 @@ export default function ResourcesPage() {
           </a>
         </motion.div>
       </section>
+      <ScrollToTopButton />
     </PageTransition>
   );
 }
